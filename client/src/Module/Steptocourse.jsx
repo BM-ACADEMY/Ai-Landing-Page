@@ -58,7 +58,7 @@ const CourseFeatures = () => {
           className="text-center mb-16"
         >
           <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight">
-            What You <span className="text-[#facc15] not-italic">'ll Get</span>
+            What You<span className="text-[#facc15] not-italic">'ll Get</span>
           </h1>
           <p className="text-gray-300 text-lg md:text-xl mt-4 max-w-2xl mx-auto">
             Comprehensive learning experience with all our courses
