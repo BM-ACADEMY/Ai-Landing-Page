@@ -65,15 +65,15 @@ export default function AwardHeadingWithStats() {
       <div className="container mx-auto px-4 pb-12">
         {/* Top 3 items */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          <CountUpItem target={1100} label="students trained at BM Academy" />
-          <CountUpItem target={12000} label="meals delivered by Dada's Kitchen" />
-          <CountUpItem target={750} label="websites & marketing projects executed by BM TECHx" />
+          <CountUpItem target={10000} label="Students Trained Across India & Abroad" />
+          <CountUpItem target={200} label="Campus Workshops Conducted" />
+          <CountUpItem target={10} label="Countries our students come from" />
         </div>
 
         {/* Bottom 2 items centered */}
         <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
-          <CountUpItem target={750} label="happy travelers served by TravellersNeed since 2013" />
-          <CountUpItem target={750} label="happy travelers served by TravellersNeed since 2013" />
+          <CountUpItem target={1000} label="Projects & Job Offers Enabled" />
+          <CountUpItem target={25} label="hSmall Businesses Automated Using AI" />
         </div>
       </div>
     </div>
