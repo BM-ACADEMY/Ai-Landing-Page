@@ -10,7 +10,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative flex flex-col min-h-[80vh] bg-black text-white text-sm pb-16 bg-[url(https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/green-gradient-bg.svg)] bg-center bg-cover" id='home'>
+    <section className="relative flex flex-col min-h-[90vh] bg-black text-white text-sm pb-16 bg-[url(https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/green-gradient-bg.svg)] bg-center bg-cover" id='home'>
       <nav className="flex items-center justify-between p-4 border-b border-white/25 md:px-16 lg:px-24 xl:px-32 w-full">
        <a href="#" className="flex items-center gap-2">
             <span className="text-2xl font-bold text-white tracking-tight">
