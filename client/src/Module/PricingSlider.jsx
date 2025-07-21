@@ -95,7 +95,7 @@ const PricingSlider = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-b from-black to-[#02290c] min-h-screen" id="plan">
+    <div className="bg-gradient-to-t from-black to-[#02290c] min-h-screen" id="plan">
       <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: -20 }}

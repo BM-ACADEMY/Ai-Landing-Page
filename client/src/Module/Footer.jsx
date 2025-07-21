@@ -8,7 +8,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="px-6 md:px-16 lg:px-24 xl:px-32 bg-gradient-to-t from-black to-[#02290c]"
+      className="px-6 md:px-16 lg:px-24 xl:px-32 bg-gradient-to-b from-black to-[#02290c]"
       id="contact"
     >
       <div className="flex flex-col md:flex-row items-start justify-between gap-6 md:gap-10 py-10 border-b border-gray-500/30 text-gray-500">
@@ -102,11 +102,7 @@ const Footer = () => {
                 <a href="#reviews" className="hover:underline transition">
                   Reviews
                 </a>
-              <li>
-                <a href="#achievements" className="hover:underline transition">
-                  Achievements
-                </a>
-              </li>
+              
               </li>
               {/* <li><Link to="/ceo" className="hover:underline transition">CEO</Link></li> */}
             </ul>

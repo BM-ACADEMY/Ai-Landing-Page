@@ -1,107 +1,141 @@
-import { useState } from 'react';
-import { Menu, X, ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { HeroVideoDialog } from "@/components/magicui/hero-video-dialog";
 
 const HeroSection = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <section className="relative flex flex-col min-h-[100vh] bg-black text-white text-sm pb-16 bg-[url(https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/green-gradient-bg.svg)] bg-center bg-cover" id='home'>
+    <section
+      className="relative flex flex-col min-h-[93vh] bg-black text-white text-sm pb-16 bg-[url(https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/hero/green-gradient-bg.svg)] bg-center bg-cover"
+      id="home"
+    >
       <nav className="flex items-center justify-between p-4 border-b border-white/25 md:px-16 lg:px-24 xl:px-32 w-full">
-       <a href="#" className="flex items-center gap-2">
-            <span className="text-2xl font-bold text-white tracking-tight">
-              ABM
-            </span>
-            <span className="text-2xl font-bold text-yellow-400 tracking-tight">
-              GROUPS
-            </span>
-          </a>
+        <a href="#" className="flex items-center gap-2">
+          <span className="text-2xl font-bold text-white tracking-tight">
+            ABM
+          </span>
+          <span className="text-2xl font-bold text-yellow-400 tracking-tight">
+            GROUPS
+          </span>
+        </a>
 
-        <ul 
-          id="menu" 
+        <ul
           className={`max-md:absolute max-md:h-full max-md:w-full max-md:top-0 transition-all duration-300 max-md:backdrop-blur max-md:bg-black/40 max-md:text-base flex flex-col md:flex-row items-center justify-center gap-8 font-medium ${
-            isMenuOpen ? 'max-md:left-0' : 'max-md:-left-full'
+            isMenuOpen ? "max-md:left-0" : "max-md:-left-full"
           }`}
         >
-          <li onClick={toggleMenu} className="hover:text-slate-300"><a href="#home">Home</a></li>
-          <li onClick={toggleMenu} className="hover:text-slate-300"><a href="#achievements">Achievements</a></li>
-          <li onClick={toggleMenu} className="hover:text-slate-300"><a href="#about">About</a></li>
-          <li onClick={toggleMenu} className="hover:text-slate-300"><a href="#plan">plan</a></li>
-          <li onClick={toggleMenu} className="hover:text-slate-300"><a href="#reviews">Reviews</a></li>
+          <li onClick={toggleMenu}>
+            <a href="#home" className="hover:text-slate-300">
+              Home
+            </a>
+          </li>
+         
+          <li onClick={toggleMenu}>
+            <a href="#about" className="hover:text-slate-300">
+              About
+            </a>
+          </li>
+          <li onClick={toggleMenu}>
+            <a href="#plan" className="hover:text-slate-300">
+              Plan
+            </a>
+          </li>
+          <li onClick={toggleMenu}>
+            <a href="#reviews" className="hover:text-slate-300">
+              Reviews
+            </a>
+          </li>
 
-          <button 
+          <button
             onClick={toggleMenu}
-            className="md:hidden bg-gray-800 hover:bg-black text-white p-2 rounded-md aspect-square font-medium transition"
+            className="md:hidden bg-gray-800 hover:bg-black text-white p-2 rounded-md aspect-square transition"
           >
             <X size={24} />
           </button>
         </ul>
 
-        <button 
-          id="open-menu" 
-          className="md:hidden"
-          onClick={toggleMenu}
-        >
+        <button className="md:hidden" onClick={toggleMenu}>
           <Menu size={28} />
         </button>
 
-        <button onClick={()=>document.getElementById("contact")?.scrollIntoView({behavior: "smooth"})} className="max-md:hidden px-6 py-2.5 bg-yellow-600 hover:bg-yellow-700 transition rounded-full">
+        <button
+          onClick={() =>
+            document
+              .getElementById("contact")
+              ?.scrollIntoView({ behavior: "smooth" })
+          }
+          className="max-md:hidden px-6 py-2.5 bg-yellow-600 hover:bg-yellow-700 transition rounded-full"
+        >
           Contact
         </button>
       </nav>
 
-      {/* Centered Content with Framer Motion */}
-      <div className="flex flex-1 flex-col items-center justify-center w-full">
+      <div className="flex flex-1 flex-col items-center justify-center w-full text-center">
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-4xl md:text-6xl text-center font-semibold max-w-4xl bg-gradient-to-r from-white to-[#748298] text-transparent bg-clip-text"
+          className="text-3xl md:text-5xl text-center font-extrabold max-w-4xl bg-gradient-to-r from-white to-[#facc15] text-transparent bg-clip-text leading-[1.6]"
         >
-          BM Academy Presents India's Most Practical AI Courses
+          Tamil Nadu-ல முதல் முறையா AI கற்றுக்கறீங்களா?
         </motion.h1>
+
         <motion.p
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4 }}
-          className="text-slate-300 md:text-base line-clamp-3 max-md:px-2 text-center max-w-md mt-3"
+          className="text-slate-300 md:text-xl font-semibold max-w-2xl mt-4"
         >
-          Upgrade Your Career or Business in Just 7-10 Days
+          Any Age, Any Background – Unlock High-Paying AI Careers from
+          Pondicherry's 1st AI Academy!
+          <br />
+          <span className="block mt-2 text-yellow-300 font-bold">
+            100% Beginner-Friendly | Certificate + Career Support | Tamil &
+            English Mixed Teaching
+          </span>
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6 }}
-          className="gap-3 mt-2 text-sm"
+          className="flex items-center gap-4 mt-8"
         >
-          <div className="text-slate-300 text-center mb-4 md:mb-0">
-            Live + Recorded Sessions | Certificate Included | Easy UPI Payment
-          </div>
-          <div className="text-slate-300 mt-2 text-center">
-            Mode: Online & Offline (Pondicherry Centre) | Language: English & Tamil
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.8 }}
-          className="flex items-center gap-3 mt-8 text-sm"
-        >
-          <button onClick={()=>document.getElementById("achievements")?.scrollIntoView({behavior: "smooth"})} className="flex items-center gap-2 px-6 py-3 bg-yellow-600 hover:bg-yellow-700 transition rounded-full">
-            <span>Get Started</span>
-            <ArrowRight size={18} />
+          <button
+            onClick={() =>
+              document
+                .getElementById("plan")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+            className="px-6 py-3 bg-yellow-600 hover:bg-yellow-700 transition rounded-full font-semibold text-white"
+          >
+            Enroll Now
           </button>
-          <button onClick={()=>document.getElementById("plan")?.scrollIntoView({behavior: "smooth"})} className="bg-white/10 border border-white/15 rounded-full px-6 py-3">
-            Learn More
+          <button
+            onClick={() => setIsVideoOpen(true)}
+            className="px-6 py-3 bg-white/10 border border-white/15 rounded-full font-semibold text-white"
+          >
+            Watch Free Demo
           </button>
         </motion.div>
       </div>
+
+      {/* HeroVideoDialog Modal */}
+      {isVideoOpen && (
+       <HeroVideoDialog
+  animationStyle="from-center"
+  videoSrc="https://www.youtube.com/embed/ZWdVJwufdVk?si=qN3G8oemrkNFn8p3"
+  
+  thumbnailSrc="https://startup-template-sage.vercel.app/hero-light.png"
+  onClose={() => setIsVideoOpen(false)}
+/>
+
+      )}
     </section>
   );
 };
