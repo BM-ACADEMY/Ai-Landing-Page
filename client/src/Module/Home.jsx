@@ -85,7 +85,7 @@ const HeroSection = () => {
   >
     <SparklesText className="inline-block bg-gradient-to-r from-white to-[#facc15] text-transparent bg-clip-text">
       Tamil Nadu-ல
-    </SparklesText> முதல் முறையா AI கற்றுக்கறீங்களா?
+    </SparklesText> முதல் முறையா AI கத்துக்கிறீங்களா?
   </motion.h1>
 
   <motion.p

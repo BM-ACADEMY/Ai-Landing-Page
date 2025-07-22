@@ -236,6 +236,7 @@ const Card = ({ title, price, originalPrice, discount, features, popular, onEnro
       >
         Pay & Join Now
       </motion.button>
+      <a href="upi://pay?pa=ns2karthika-1@okaxis&pn=Karthika+N&am=99&tn=Course+Fee&cu=INR">Pay with UPI</a>
       <motion.button
         onClick={onEnrollClick}
         whileHover={{ scale: 1.03 }}
