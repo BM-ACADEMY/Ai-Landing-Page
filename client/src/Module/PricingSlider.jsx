@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
 const PricingSlider = () => {
-  const [showModal, setShowModal] = useState(false);
-
   const handleWhatsAppClick = (courseName) => {
     const phoneNumber = "9944940051";
     const message = `Hi, I'm interested in joining the ${courseName} course. Please provide more details.`;
@@ -11,17 +9,6 @@ const PricingSlider = () => {
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappUrl, "_blank");
   };
-
-
-  React.useEffect(() => {
-  if (!showModal) return;
-  const handleEsc = (e) => {
-    if (e.key === "Escape") setShowModal(false);
-  };
-  window.addEventListener("keydown", handleEsc);
-  return () => window.removeEventListener("keydown", handleEsc);
-}, [showModal]);
-
 
   const cards = [
     {
@@ -35,7 +22,7 @@ const PricingSlider = () => {
         "Language: Tamil & English",
         "Certificate of Completion",
       ],
-      upiAmount: "1",
+      upiAmount: "999",
       popular: false,
     },
     {
@@ -112,13 +99,6 @@ const PricingSlider = () => {
     show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
-  // Helper function to detect mobile device
-  const isMobile = () =>
-    /android|iphone|ipad|ipod|opera mini|iemobile|mobile/i.test(
-      navigator.userAgent
-    );
-
-  // Pass setShowModal to Card as prop
   return (
     <div className="bg-gradient-to-t from-black to-[#02290c] min-h-screen" id="plan">
       <div className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -152,64 +132,20 @@ const PricingSlider = () => {
               <Card
                 {...card}
                 onEnrollClick={() => handleWhatsAppClick(card.title)}
-                setShowModal={setShowModal}
-                isMobile={isMobile}
               />
             </motion.div>
           ))}
         </motion.div>
       </div>
-
-      {/* Modal for desktop UPI message */}
-     {showModal && (
-  <motion.div
-    className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    onClick={() => setShowModal(false)}
-    aria-modal="true"
-    role="dialog"
-    tabIndex={-1}
-  >
-    <motion.div
-      className="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full text-center relative"
-      initial={{ scale: 0.9, y: 40, opacity: 0 }}
-      animate={{ scale: 1, y: 0, opacity: 1 }}
-      exit={{ scale: 0.9, y: 40, opacity: 0 }}
-      onClick={e => e.stopPropagation()} // Prevent closing when clicking inside modal
-    >
-      <button
-        className="absolute top-3 right-4 text-gray-400 hover:text-black text-2xl focus:outline-none"
-        onClick={() => setShowModal(false)}
-        aria-label="Close"
-      >
-        &times;
-      </button>
-      <div className="flex flex-col items-center">
-        <div className="text-yellow-500 text-4xl mb-2 animate-bounce">⚠️</div>
-        <h2 className="text-xl font-bold mb-2 text-gray-800">UPI Payment Notice</h2>
-        <div className="w-12 border-b-2 border-yellow-400 mx-auto mb-4"></div>
-        <p className="text-gray-700 mb-4 leading-relaxed">
-          UPI payment links work <b>only on mobile devices</b>.<br /><br />
-          <span className="text-yellow-700 font-semibold">
-            Please use your phone to pay via UPI.
-          </span>
-        </p>
-        <button
-          className="mt-2 px-6 py-2 bg-yellow-500 text-white rounded-lg font-semibold shadow hover:bg-yellow-600 transition"
-          onClick={() => setShowModal(false)}
-          autoFocus
-        >
-          OK, Got it!
-        </button>
-      </div>
-    </motion.div>
-  </motion.div>
-)}
     </div>
   );
 };
+
+// Helper function to detect mobile device
+const isMobile = () =>
+  /android|iphone|ipad|ipod|opera mini|iemobile|mobile/i.test(
+    navigator.userAgent
+  );
 
 const Card = ({
   title,
@@ -220,8 +156,6 @@ const Card = ({
   popular,
   upiAmount,
   onEnrollClick,
-  setShowModal,
-  isMobile,
 }) => {
   const upiId = "ns2karthika-1@okaxis";
   const upiName = "Karthika N";
@@ -234,7 +168,9 @@ const Card = ({
     if (isMobile()) {
       window.location.href = upiUrl;
     } else {
-      setShowModal(true);
+      alert(
+        "UPI payment links work only on mobile devices.\n\nPlease use your phone to pay via UPI."
+      );
     }
   };
 
@@ -288,6 +224,7 @@ const Card = ({
         >
           Pay & Join Now
         </motion.button>
+        <a href="upi://pay?pa=ns2karthika-1@okaxis&pn=Karthika+N&am=1&tn=Course+Fee&cu=INR">Pay with UPI</a>
         <motion.button
           onClick={onEnrollClick}
           whileHover={{ scale: 1.03 }}
