@@ -43,7 +43,7 @@ const PricingSlider = () => {
   const cards = [
     {
       title: "AI for School Students (8th–12th Std)",
-      price: "₹749",
+      price: "₹999",
       originalPrice: "₹1,499",
       discount: "50% OFF",
       features: [
@@ -56,8 +56,8 @@ const PricingSlider = () => {
     },
     {
       title: "AI for College Students",
-      price: "₹999",
-      originalPrice: "₹1,999",
+      price: "₹1,999",
+      originalPrice: "₹3,999",
       discount: "50% OFF",
       features: [
         "Build Final Year Projects, Resume & Freelance Tools",
@@ -69,8 +69,8 @@ const PricingSlider = () => {
     },
     {
       title: "AI for Job Seekers",
-      price: "₹999",
-      originalPrice: "₹1,999",
+      price: "₹4,999",
+      originalPrice: "₹6,999",
       discount: "50% OFF",
       features: [
         "Create ATS-Friendly Resume, Automate Job Search & LinkedIn",
@@ -82,8 +82,8 @@ const PricingSlider = () => {
     },
     {
       title: "AI for Entrepreneurs",
-      price: "₹1,299",
-      originalPrice: "₹2,499",
+      price: "₹6,999",
+      originalPrice: "₹9,999",
       discount: "48% OFF",
       features: [
         "Use AI for WhatsApp Bots, Insta Content, CRM & Billing",
@@ -95,8 +95,8 @@ const PricingSlider = () => {
     },
     {
       title: "AI for Digital Marketers",
-      price: "₹1,299",
-      originalPrice: "₹2,499",
+      price: "₹9,999",
+      originalPrice: "₹11,999",
       discount: "48% OFF",
       features: [
         "Meta Ads, Reels Automation, Analytics with AI",
