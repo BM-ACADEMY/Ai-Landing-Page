@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { HeroVideoDialog } from "@/components/magicui/hero-video-dialog";
+import { SparklesText } from "@/components/magicui/sparkles-text";
 
 const HeroSection = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -76,54 +77,60 @@ const HeroSection = () => {
       </nav>
 
       <div className="flex flex-1 flex-col items-center justify-center w-full text-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-3xl md:text-5xl text-center font-extrabold max-w-4xl bg-gradient-to-r from-white to-[#facc15] text-transparent bg-clip-text leading-[1.6]"
-        >
-          Tamil Nadu-ல முதல் முறையா AI கற்றுக்கறீங்களா?
-        </motion.h1>
+  <motion.h1
+    initial={{ opacity: 0, y: 50, scale: 0.8 }}
+    animate={{ opacity: 1, y: 0, scale: 1 }}
+    transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
+    className="text-3xl md:text-5xl text-center font-extrabold max-w-4xl bg-gradient-to-r from-white to-[#facc15] text-transparent bg-clip-text leading-[1.6]"
+  >
+    <SparklesText className="inline-block bg-gradient-to-r from-white to-[#facc15] text-transparent bg-clip-text">
+      Tamil Nadu-ல
+    </SparklesText> முதல் முறையா AI கற்றுக்கறீங்களா?
+  </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-          className="text-slate-300 md:text-xl font-semibold max-w-2xl mt-4"
-        >
-          Any Age, Any Background – Unlock High-Paying AI Careers from
-          Pondicherry's 1st AI Academy!
-          <br />
-          <span className="block mt-2 text-yellow-300 font-bold">
-            100% Beginner-Friendly | Certificate + Career Support | Tamil &
-            English Mixed Teaching
-          </span>
-        </motion.p>
+  <motion.p
+    initial={{ opacity: 0, y: 50, scale: 0.8 }}
+    animate={{ opacity: 1, y: 0, scale: 1 }}
+    transition={{ duration: 0.7, delay: 0.4, ease: 'easeOut' }}
+    className="text-slate-300 md:text-xl font-semibold max-w-2xl mt-4"
+  >
+    Any Age, Any Background – Unlock High-Paying AI Careers from
+    Pondicherry's 1st AI Academy!
+    <br />
+    <span className="block mt-2 text-yellow-300 font-bold">
+      100% Beginner-Friendly | Certificate + Career Support | Tamil &
+      English Mixed Teaching
+    </span>
+  </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.6 }}
-          className="flex items-center gap-4 mt-8"
-        >
-          <button
-            onClick={() =>
-              document
-                .getElementById("plan")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="px-6 py-3 bg-yellow-600 hover:bg-yellow-700 transition rounded-full font-semibold text-white"
-          >
-            Enroll Now
-          </button>
-          <button
-            onClick={() => setIsVideoOpen(true)}
-            className="px-6 py-3 bg-white/10 border border-white/15 rounded-full font-semibold text-white"
-          >
-            Watch Free Demo
-          </button>
-        </motion.div>
-      </div>
+  <motion.div
+    initial={{ opacity: 0, y: 50, scale: 0.8 }}
+    animate={{ opacity: 1, y: 0, scale: 1 }}
+    transition={{ duration: 0.7, delay: 0.6, ease: 'easeOut' }}
+    className="flex items-center gap-4 mt-8"
+  >
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={() =>
+        document
+          .getElementById("plan")
+          ?.scrollIntoView({ behavior: "smooth" })
+      }
+      className="px-6 py-3 bg-yellow-600 hover:bg-yellow-700 transition rounded-full font-semibold text-white"
+    >
+      Enroll Now
+    </motion.button>
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={() => setIsVideoOpen(true)}
+      className="px-6 py-3 bg-white/10 border border-white/15 rounded-full font-semibold text-white"
+    >
+      Watch Free Demo
+    </motion.button>
+  </motion.div>
+</div>
 
       {/* HeroVideoDialog Modal */}
       {isVideoOpen && (

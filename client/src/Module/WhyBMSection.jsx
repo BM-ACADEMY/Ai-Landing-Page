@@ -82,18 +82,18 @@ const WhyBMSection = () => {
     <section className="py-16 px-4 bg-gradient-to-b from-black to-[#02290c]">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Why BM Academy?
-          </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+                initial={{ y: -20 }}
+                animate={{ y: 0 }}
+                className="text-center mb-12 px-4 md:px-8"
+              >
+                <h1 className="text-3xl md:text-5xl font-extrabold text-white leading-tight">
+                  Why {" "}
+                  <span className="text-[#facc15] not-italic">BM Academy?</span>
+                </h1>
+                 <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Experience excellence in education with our proven track record and comprehensive support system
           </p>
-        </motion.div>
+              </motion.div>
 
         <motion.div
           variants={containerVariants}

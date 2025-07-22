@@ -149,7 +149,7 @@ const CourseCategories = () => {
 
           {/* Secondary CTA */}
           <motion.a
-            href="tel:8056889971"
+            href="tel:9944940051"
             className="flex items-center justify-center gap-2 px-8 py-3 text-base font-semibold rounded-lg 
     border border-white/30 text-white 
     bg-white/10 backdrop-blur-md 

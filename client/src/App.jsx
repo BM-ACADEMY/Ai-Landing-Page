@@ -1,7 +1,8 @@
 import CourseHighlights from "./Module/CourseHighlights"
 import Footer from "./Module/Footer"
+import Gallery from "./Module/gallery"
 import HeroSection from "./Module/Home"
-import PricingSection from "./Module/PricingSection"
+import OfferSection from "./Module/offersection"
 import PricingSlider from "./Module/PricingSlider"
 import WhatYoullGet from "./Module/Steptocourse"
 import TrustBuildersSection from "./Module/TrustBuildersSection"
@@ -20,7 +21,8 @@ function App() {
       <PricingSlider/>
       <WhyBMSection/>
       <TrustBuildersSection/>
-      <PricingSection/>
+      <Gallery/>
+      <OfferSection/>
       <WhatYoullGet/>
       <WhatsappFloatButton/>
       <Footer/>   

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion'; // Added AnimatePresence
 import { 
   Star, 
   Camera, 
@@ -11,8 +11,8 @@ import {
   ChevronRight,
   Quote
 } from 'lucide-react';
-import Offline from '../assets/images/offline.png'
-import Online from '../assets/images/online.png'
+import Offline from '../assets/images/offline.png';
+import Online from '../assets/images/online.png';
 
 const TrustBuildersSection = () => {
   const [currentReview, setCurrentReview] = useState(0);
@@ -35,21 +35,18 @@ const TrustBuildersSection = () => {
       role: "Student - Batch 2024",
       rating: 5,
       comment: "BM Academy-ல AI course முடிச்சதுக்கு அப்புறம் என் business 3x grow ஆயிடுச்சு! Best decision ever!",
-      image: "" // Try with "" or null to see initials
     },
     {
       name: "Rajesh M",
       role: "Shop Owner",
       rating: 5,
       comment: "தமிழ்ல class எடுத்ததால எனக்கு எல்லாம் easy-ஆ புரிஞ்சது. Now I use AI daily for my work!",
-       image: "" 
     },
     {
       name: "Divya S",
       role: "College Student",
       rating: 5,
       comment: "Certificate கிடைச்சதும் campus placement-ல select ஆயிட்டேன்! Thank you BM Academy!",
-      image: "" // Try with "" or null to see initials
     }
   ];
 
@@ -81,6 +78,18 @@ const TrustBuildersSection = () => {
   const prevImage = () => {
     setCurrentImage((prev) => (prev - 1 + classImages.length) % classImages.length);
   };
+
+  // Auto-slide for reviews (every 5 seconds)
+  useEffect(() => {
+    const reviewInterval = setInterval(nextReview, 5000);
+    return () => clearInterval(reviewInterval);
+  }, []);
+
+  // Auto-slide for images (every 5 seconds)
+  useEffect(() => {
+    const imageInterval = setInterval(nextImage, 5000);
+    return () => clearInterval(imageInterval);
+  }, []);
 
   return (
     <section id='reviews' className="py-8 sm:py-12 md:py-16 px-4 bg-gradient-to-b from-[#02290c] to-black">
@@ -145,36 +154,46 @@ const TrustBuildersSection = () => {
             <div className="relative">
               <Quote className="absolute -top-2 sm:-top-4 -left-1 sm:-left-2 w-6 h-6 sm:w-8 sm:h-8 text-white/20" />
               <div className="pl-4 sm:pl-6">
-                <div className="flex items-center gap-3 mb-3 sm:mb-4">
-                  {/* Avatar with initials fallback */}
-                  {reviews[currentReview].image ? (
-                    <img
-                      src={reviews[currentReview].image}
-                      alt={reviews[currentReview].name}
-                      className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full border-2 border-white/30 object-cover bg-gray-200"
-                    />
-                  ) : (
-                    <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-gradient-to-br from-green-400 to-blue-500 text-white text-lg sm:text-xl md:text-2xl font-bold border-2 border-white/30">
-                      {getInitials(reviews[currentReview].name)}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentReview} // Key on index to trigger animation on change
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                  >
+                    <div className="flex items-center gap-3 mb-3 sm:mb-4">
+                      {/* Avatar with initials fallback */}
+                      {reviews[currentReview].image ? (
+                        <img
+                          src={reviews[currentReview].image}
+                          alt={reviews[currentReview].name}
+                          className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full border-2 border-white/30 object-cover bg-gray-200"
+                        />
+                      ) : (
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center bg-gradient-to-br from-green-400 to-blue-500 text-white text-lg sm:text-xl md:text-2xl font-bold border-2 border-white/30">
+                          {getInitials(reviews[currentReview].name)}
+                        </div>
+                      )}
+                      <div>
+                        <h4 className="text-base sm:text-lg font-semibold text-white">
+                          {reviews[currentReview].name}
+                        </h4>
+                        <p className="text-xs sm:text-sm text-gray-300">
+                          {reviews[currentReview].role}
+                        </p>
+                      </div>
                     </div>
-                  )}
-                  <div>
-                    <h4 className="text-base sm:text-lg font-semibold text-white">
-                      {reviews[currentReview].name}
-                    </h4>
-                    <p className="text-xs sm:text-sm text-gray-300">
-                      {reviews[currentReview].role}
+                    <div className="flex gap-0.5 sm:gap-1 mb-2 sm:mb-3">
+                      {[...Array(reviews[currentReview].rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-yellow-400" />
+                      ))}
+                    </div>
+                    <p className="text-sm sm:text-base text-gray-200 italic">
+                      "{reviews[currentReview].comment}"
                     </p>
-                  </div>
-                </div>
-                <div className="flex gap-0.5 sm:gap-1 mb-2 sm:mb-3">
-                  {[...Array(reviews[currentReview].rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-sm sm:text-base text-gray-200 italic">
-                  "{reviews[currentReview].comment}"
-                </p>
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </div>
           </motion.div>
@@ -208,35 +227,43 @@ const TrustBuildersSection = () => {
             </div>
 
             <div className="relative">
-              <img
-                src={classImages[currentImage].url}
-                alt={classImages[currentImage].caption}
-                className="w-full h-48 sm:h-56 md:h-64 object-cover rounded-lg"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 sm:p-4 rounded-b-lg">
-                <p className="text-sm sm:text-base text-white font-medium">{classImages[currentImage].caption}</p>
-                <span className="inline-block mt-1 px-2 sm:px-3 py-0.5 sm:py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs text-white">
-                  {classImages[currentImage].type === 'online' ? (
-                    <span className="flex items-center gap-1">
-                      <Camera className="w-4 h-4 text-green-400" /> Online
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentImage} // Key on index to trigger animation on change
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="relative"
+                >
+                  <img
+                    src={classImages[currentImage].url}
+                    alt={classImages[currentImage].caption}
+                    className="w-full h-48 sm:h-56 md:h-64 object-cover rounded-lg"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 sm:p-4 rounded-b-lg">
+                    <p className="text-sm sm:text-base text-white font-medium">{classImages[currentImage].caption}</p>
+                    <span className="inline-block mt-1 px-2 sm:px-3 py-0.5 sm:py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs text-white">
+                      {classImages[currentImage].type === 'online' ? (
+                        <span className="flex items-center gap-1">
+                          <Camera className="w-4 h-4 text-green-400" /> Online
+                        </span>
+                      ) : classImages[currentImage].type === 'offline' ? (
+                        <span className="flex items-center gap-1">
+                          <LocationEdit className="w-4 h-4 text-blue-400" /> Offline
+                        </span>
+                      ) : (
+                        <span className="flex items-center gap-1">
+                          <Star className="w-4 h-4 text-yellow-400" /> Practical
+                        </span>
+                      )}
                     </span>
-                  ) : classImages[currentImage].type === 'offline' ? (
-                    <span className="flex items-center gap-1">
-                      <LocationEdit className="w-4 h-4 text-blue-400" /> Offline
-                      
-                    </span>
-                  ) : (
-                    <span className="flex items-center gap-1">
-                      <Star className="w-4 h-4 text-yellow-400" /> Practical
-                    </span>
-                  )}
-                </span>
-              </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
           </motion.div>
         </div>
-
-       
 
         {/* Contact CTA */}
         <motion.div
@@ -254,7 +281,7 @@ const TrustBuildersSection = () => {
           
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
             <a
-              href="https://wa.me/918056889971?text=Hi%20BM%20Academy%2C%20I%20am%20interested%20in%20your%20AI%20course.%20Please%20share%20details." target='_blank'
+              href="https://wa.me/919944940051?text=Hi%20BM%20Academy%2C%20I%20am%20interested%20in%20your%20AI%20course.%20Please%20share%20details." target='_blank'
               className="flex items-center gap-2 sm:gap-3 bg-green-500 hover:bg-green-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto justify-center"
             >
               <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -262,11 +289,11 @@ const TrustBuildersSection = () => {
             </a>
             
             <a
-              href="tel:8056889971"
+              href="tel:9944940051"
               className="flex items-center gap-2 sm:gap-3 bg-white text-gray-900 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto justify-center"
             >
               <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
-              <span className="text-sm sm:text-base">Call: 8056889971</span>
+              <span className="text-sm sm:text-base">Call: 9944940051</span>
             </a>
           </div>
         </motion.div>

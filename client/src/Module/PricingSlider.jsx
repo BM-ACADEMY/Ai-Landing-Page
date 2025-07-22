@@ -19,7 +19,7 @@ const PricingSlider = () => {
   };
 
   const handleWhatsAppClick = (courseName) => {
-    const phoneNumber = "9944288271";
+    const phoneNumber = "9944940051";
     const message = `Hi, I'm interested in joining the ${courseName} course. Please provide more details.`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;

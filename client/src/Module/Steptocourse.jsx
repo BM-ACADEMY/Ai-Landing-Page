@@ -49,7 +49,7 @@ const CourseFeatures = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-t from-black to-[#02290c]">
+    <section className="py-20 bg-gradient-to-b from-black to-[#02290c]">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
