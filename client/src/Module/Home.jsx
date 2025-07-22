@@ -84,8 +84,8 @@ const HeroSection = () => {
     className="text-3xl md:text-4xl text-center font-extrabold max-w-4xl bg-gradient-to-r from-white to-[#facc15] text-transparent bg-clip-text leading-[1.6]"
   >
     <SparklesText className="inline-block bg-gradient-to-r from-white to-[#facc15] text-transparent bg-clip-text">
-      Tamil Nadu-ல
-    </SparklesText> முதல் முறையா AI கத்துக்கிறீங்களா?
+      Tamil Nadu
+    </SparklesText> -ல முதல் முறையா AI கத்துக்கிறீங்களா?
   </motion.h1>
 
   <motion.p
