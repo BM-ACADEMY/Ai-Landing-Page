@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import Payment from '../assets/images/payment.jpg'
 
 const PricingSlider = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState(null);
+
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -23,7 +27,17 @@ const PricingSlider = () => {
     const message = `Hi, I'm interested in joining the ${courseName} course. Please provide more details.`;
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-    window.open(whatsappUrl, '_blank');
+    window.open(whatsappUrl, "_blank");
+  };
+
+  const handlePayClick = (course) => {
+    setSelectedCourse(course);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedCourse(null);
   };
 
   const cards = [
@@ -126,16 +140,53 @@ const PricingSlider = () => {
               variants={item}
               className="w-full sm:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)]"
             >
-              <Card {...card} onEnrollClick={() => handleWhatsAppClick(card.title)} />
+              <Card
+                {...card}
+                onEnrollClick={() => handleWhatsAppClick(card.title)}
+                onPayClick={() => handlePayClick(card)}
+              />
             </motion.div>
           ))}
         </motion.div>
       </div>
+
+      {isModalOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/80 bg-opacity-50 flex items-center justify-center z-50"
+          onClick={closeModal}
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            className="bg-gray-900 rounded-lg p-6 max-w-lg w-full mx-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-bold text-white">{selectedCourse?.title}</h2>
+              <button
+                onClick={closeModal}
+                className="text-gray-400 hover:text-white"
+              >
+                ✕
+              </button>
+            </div>
+            <img
+              src={Payment} // Replace with your image URL
+              alt="Course Preview"
+              className="w-full h-auto rounded-lg"
+            />
+          </motion.div>
+        </motion.div>
+      )}
     </div>
   );
 };
 
-const Card = ({ title, price, originalPrice, discount, features, popular, onEnrollClick }) => (
+const Card = ({ title, price, originalPrice, discount, features, popular, onEnrollClick, onPayClick }) => (
   <motion.div
     whileHover={{ y: -10, scale: 1.02 }}
     className={`relative rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 p-6 flex flex-col justify-between h-full shadow-xl ${
@@ -176,7 +227,7 @@ const Card = ({ title, price, originalPrice, discount, features, popular, onEnro
       <motion.button
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.98 }}
-        onClick={onEnrollClick}
+        onClick={onPayClick}
         className={`w-full px-6 py-3 font-medium rounded-lg transition ${
           popular
             ? "bg-yellow-500 hover:bg-yellow-600 text-white"
@@ -186,7 +237,7 @@ const Card = ({ title, price, originalPrice, discount, features, popular, onEnro
         Pay & Join Now
       </motion.button>
       <motion.button
-      onClick={onEnrollClick}
+        onClick={onEnrollClick}
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.98 }}
         className="w-full px-6 py-3 font-medium border border-gray-600 text-gray-300 rounded-lg hover:bg-gray-800 transition"

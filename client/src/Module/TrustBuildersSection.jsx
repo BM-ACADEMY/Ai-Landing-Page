@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion'; // Added AnimatePresence
-import { 
-  Star, 
-  Camera, 
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion"; // Added AnimatePresence
+import {
+  Star,
+  Camera,
   LocationEdit,
-  Award, 
+  Award,
   Phone,
   MessageCircle,
   ChevronLeft,
   ChevronRight,
-  Quote
-} from 'lucide-react';
-import Offline from '../assets/images/offline.png';
-import Online from '../assets/images/online.png';
+  Quote,
+} from "lucide-react";
+import Offline from "../assets/images/offline.png";
+import Online from "../assets/images/online.png";
 
 const TrustBuildersSection = () => {
   const [currentReview, setCurrentReview] = useState(0);
@@ -20,11 +20,11 @@ const TrustBuildersSection = () => {
 
   // Helper to get initials
   const getInitials = (name) => {
-    if (!name) return '';
+    if (!name) return "";
     return name
-      .split(' ')
+      .split(" ")
       .map((n) => n[0])
-      .join('')
+      .join("")
       .slice(0, 2)
       .toUpperCase();
   };
@@ -34,32 +34,35 @@ const TrustBuildersSection = () => {
       name: "Priya Kumar",
       role: "Student - Batch 2024",
       rating: 5,
-      comment: "BM Academy-ல AI course முடிச்சதுக்கு அப்புறம் என் business 3x grow ஆயிடுச்சு! Best decision ever!",
+      comment:
+        "BM Academy-ல AI course முடிச்சதுக்கு அப்புறம் என் business 3x grow ஆயிடுச்சு! Best decision ever!",
     },
     {
       name: "Rajesh M",
       role: "Shop Owner",
       rating: 5,
-      comment: "தமிழ்ல class எடுத்ததால எனக்கு எல்லாம் easy-ஆ புரிஞ்சது. Now I use AI daily for my work!",
+      comment:
+        "தமிழ்ல class எடுத்ததால எனக்கு எல்லாம் easy-ஆ புரிஞ்சது. Now I use AI daily for my work!",
     },
     {
       name: "Divya S",
       role: "College Student",
       rating: 5,
-      comment: "Certificate கிடைச்சதும் campus placement-ல select ஆயிட்டேன்! Thank you BM Academy!",
-    }
+      comment:
+        "Certificate கிடைச்சதும் campus placement-ல select ஆயிட்டேன்! Thank you BM Academy!",
+    },
   ];
 
   const classImages = [
     {
       url: Online,
       caption: "Live Online Class in Progress",
-      type: "online"
+      type: "online",
     },
     {
       url: Offline,
       caption: "Offline Batch - Pondicherry Center",
-      type: "offline"
+      type: "offline",
     },
   ];
 
@@ -76,7 +79,9 @@ const TrustBuildersSection = () => {
   };
 
   const prevImage = () => {
-    setCurrentImage((prev) => (prev - 1 + classImages.length) % classImages.length);
+    setCurrentImage(
+      (prev) => (prev - 1 + classImages.length) % classImages.length
+    );
   };
 
   // Auto-slide for reviews (every 5 seconds)
@@ -92,9 +97,11 @@ const TrustBuildersSection = () => {
   }, []);
 
   return (
-    <section id='reviews' className="py-8 sm:py-12 md:py-16 px-4 bg-gradient-to-b from-[#02290c] to-black">
+    <section
+      id="reviews"
+      className="py-8 sm:py-12 md:py-16 px-4 bg-gradient-to-b from-[#02290c] to-black"
+    >
       <div className="max-w-7xl mx-auto">
-
         {/* Scarcity + Pride Badge */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -111,11 +118,12 @@ const TrustBuildersSection = () => {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-8 md:mb-12"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-14"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-4">
-            நம்ம Students சொல்றாங்க! 
+          <h2 className="text-3xl md:text-5xl font-bold text-white">
+            நம்ம Students{" "}
+            <span className="text-yellow-400 font-extrabold">சொல்றாங்க! </span>
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-300">
             1000+ Success Stories from Tamil Nadu
@@ -133,7 +141,9 @@ const TrustBuildersSection = () => {
             <div className="flex items-center justify-between mb-4 sm:mb-6">
               <div className="flex items-center gap-2">
                 <Star className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400 fill-yellow-400" />
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">Student Reviews</h3>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">
+                  Student Reviews
+                </h3>
               </div>
               <div className="flex gap-1 sm:gap-2">
                 <button
@@ -186,7 +196,10 @@ const TrustBuildersSection = () => {
                     </div>
                     <div className="flex gap-0.5 sm:gap-1 mb-2 sm:mb-3">
                       {[...Array(reviews[currentReview].rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-yellow-400" />
+                        <Star
+                          key={i}
+                          className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-yellow-400"
+                        />
                       ))}
                     </div>
                     <p className="text-sm sm:text-base text-gray-200 italic">
@@ -208,7 +221,9 @@ const TrustBuildersSection = () => {
             <div className="flex items-center justify-between mb-4 sm:mb-6">
               <div className="flex items-center gap-2">
                 <Camera className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">Real Class Pics</h3>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">
+                  Real Class Pics
+                </h3>
               </div>
               <div className="flex gap-1 sm:gap-2">
                 <button
@@ -242,15 +257,18 @@ const TrustBuildersSection = () => {
                     className="w-full h-48 sm:h-56 md:h-64 object-cover rounded-lg"
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 sm:p-4 rounded-b-lg">
-                    <p className="text-sm sm:text-base text-white font-medium">{classImages[currentImage].caption}</p>
+                    <p className="text-sm sm:text-base text-white font-medium">
+                      {classImages[currentImage].caption}
+                    </p>
                     <span className="inline-block mt-1 px-2 sm:px-3 py-0.5 sm:py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs text-white">
-                      {classImages[currentImage].type === 'online' ? (
+                      {classImages[currentImage].type === "online" ? (
                         <span className="flex items-center gap-1">
                           <Camera className="w-4 h-4 text-green-400" /> Online
                         </span>
-                      ) : classImages[currentImage].type === 'offline' ? (
+                      ) : classImages[currentImage].type === "offline" ? (
                         <span className="flex items-center gap-1">
-                          <LocationEdit className="w-4 h-4 text-blue-400" /> Offline
+                          <LocationEdit className="w-4 h-4 text-blue-400" />{" "}
+                          Offline
                         </span>
                       ) : (
                         <span className="flex items-center gap-1">
@@ -278,16 +296,17 @@ const TrustBuildersSection = () => {
           <p className="text-base sm:text-lg md:text-xl text-white/90 mb-4 sm:mb-6 md:mb-8">
             Join 1000+ successful students today!
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
             <a
-              href="https://wa.me/919944940051?text=Hi%20BM%20Academy%2C%20I%20am%20interested%20in%20your%20AI%20course.%20Please%20share%20details." target='_blank'
+              href="https://wa.me/919944940051?text=Hi%20BM%20Academy%2C%20I%20am%20interested%20in%20your%20AI%20course.%20Please%20share%20details."
+              target="_blank"
               className="flex items-center gap-2 sm:gap-3 bg-green-500 hover:bg-green-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto justify-center"
             >
               <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6" />
               <span className="text-sm sm:text-base">WhatsApp Now</span>
             </a>
-            
+
             <a
               href="tel:9944940051"
               className="flex items-center gap-2 sm:gap-3 bg-white text-gray-900 font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-full transition-all transform hover:scale-105 shadow-lg w-full sm:w-auto justify-center"

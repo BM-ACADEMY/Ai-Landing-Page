@@ -10,8 +10,7 @@ import ReactPaginate from 'react-paginate';
 import { motion } from "framer-motion";
 import Offline1 from '../assets/gallery/2024-12-09.png';
 import Offline2 from '../assets/gallery/offline.jpg'
-import Offline3 from '../assets/gallery/offline2.png'
-import Offline4 from '../assets/gallery/Offline3.jpg'
+
 import Offline5 from '../assets/gallery/offline4.jpg'
 import Offline6 from '../assets/gallery/offline5.jpg'
 
@@ -39,13 +38,7 @@ const staticImages = [
     category: "Offline",
     description: "Offline Workshop - Pondicherry Center",
   },
-  {
-    id: 3,
-    url: Offline4,
-    thumbnailUrl: Offline4,
-    category: "Offline",
-    description: "Group Project Session",
-  },
+
   {
     id: 4,
     url: Offline5,
@@ -53,13 +46,7 @@ const staticImages = [
     category: "Offline",
     description: "Certification Ceremony",
   },
-  {
-    id: 5,
-    url: Offline3,
-    thumbnailUrl: Offline3,
-    category: "Offline",
-    description: "Hands-on Training Session",
-  },
+
   {
     id: 6,
     url: Offline6,

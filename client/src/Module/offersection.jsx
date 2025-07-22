@@ -28,20 +28,26 @@ const OfferSection = () => {
 
   // Trigger confetti when section is in view
   useEffect(() => {
-    const observer = new window.IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShowConfetti(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-    if (sectionRef.current) {
+    let observer;
+    if (sectionRef.current && !showConfetti) {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setShowConfetti(true);
+            observer.disconnect();
+          }
+        },
+        { threshold: 0.3 }
+      );
       observer.observe(sectionRef.current);
     }
-    return () => observer.disconnect();
-  }, []);
+
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+    };
+  }, [showConfetti]); // Depend on showConfetti to avoid recreating the observer unnecessarily
 
   return (
     <section
