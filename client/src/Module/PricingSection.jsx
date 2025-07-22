@@ -31,7 +31,7 @@ const OfferSection = () => {
         {/* Buttons */}
         <div className="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
           <a
-            href="#enroll"
+           href="https://wa.me/918056889971?text=Hi%20BM%20Academy%2C%20I%20am%20interested%20in%20your%20AI%20course.%20Please%20share%20details." target='_blank'
             className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 text-white font-medium rounded-xl shadow hover:bg-orange-600 transition"
           >
             Enroll Now <ArrowRightCircle className="h-5 w-5" />

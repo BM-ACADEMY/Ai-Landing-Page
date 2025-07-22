@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { 
   Star, 
   Camera, 
+  LocationEdit,
   Award, 
   Phone,
   MessageCircle,
@@ -10,6 +11,8 @@ import {
   ChevronRight,
   Quote
 } from 'lucide-react';
+import Offline from '../assets/images/offline.png'
+import Online from '../assets/images/online.png'
 
 const TrustBuildersSection = () => {
   const [currentReview, setCurrentReview] = useState(0);
@@ -52,20 +55,15 @@ const TrustBuildersSection = () => {
 
   const classImages = [
     {
-      url: "https://media.architecturaldigest.com/photos/66a914f1a958d12e0cc94a8e/16:9/w_2992,h_1683,c_limit/DSC_5903.jpg",
+      url: Online,
       caption: "Live Online Class in Progress",
       type: "online"
     },
     {
-      url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs2lnId2EP_x597nX3SwVzJFUzNghOm_eWC78vr6nGaMr_55SjyeJnXjoLnJPl9dxHxaY&usqp=CAU",
+      url: Offline,
       caption: "Offline Batch - Pondicherry Center",
       type: "offline"
     },
-    {
-      url: "https://www.spinny.com/blog/wp-content/uploads/2024/09/videoframe_0.webp",
-      caption: "Students Working on AI Projects",
-      type: "practical"
-    }
   ];
 
   const nextReview = () => {
@@ -218,8 +216,20 @@ const TrustBuildersSection = () => {
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 sm:p-4 rounded-b-lg">
                 <p className="text-sm sm:text-base text-white font-medium">{classImages[currentImage].caption}</p>
                 <span className="inline-block mt-1 px-2 sm:px-3 py-0.5 sm:py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs text-white">
-                  {classImages[currentImage].type === 'online' ? '🟢 Online' : 
-                   classImages[currentImage].type === 'offline' ? '📍 Offline' : '💻 Practical'}
+                  {classImages[currentImage].type === 'online' ? (
+                    <span className="flex items-center gap-1">
+                      <Camera className="w-4 h-4 text-green-400" /> Online
+                    </span>
+                  ) : classImages[currentImage].type === 'offline' ? (
+                    <span className="flex items-center gap-1">
+                      <LocationEdit className="w-4 h-4 text-blue-400" /> Offline
+                      
+                    </span>
+                  ) : (
+                    <span className="flex items-center gap-1">
+                      <Star className="w-4 h-4 text-yellow-400" /> Practical
+                    </span>
+                  )}
                 </span>
               </div>
             </div>

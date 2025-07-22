@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
+
 // Data for each user group
 const groups = [
   {
