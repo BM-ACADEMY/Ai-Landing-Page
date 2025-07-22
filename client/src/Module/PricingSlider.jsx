@@ -35,7 +35,7 @@ const PricingSlider = () => {
         "Language: Tamil & English",
         "Certificate of Completion",
       ],
-      upiAmount: "999",
+      upiAmount: "1",
       popular: false,
     },
     {
