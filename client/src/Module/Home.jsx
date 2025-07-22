@@ -26,10 +26,11 @@ const HeroSection = () => {
         </a>
 
         <ul
-          className={`max-md:absolute max-md:h-full max-md:w-full max-md:top-0 transition-all duration-300 max-md:backdrop-blur max-md:bg-black/40 max-md:text-base flex flex-col md:flex-row items-center justify-center gap-8 font-medium ${
-            isMenuOpen ? "max-md:left-0" : "max-md:-left-full"
-          }`}
-        >
+  className={`max-md:fixed max-md:inset-0 max-md:z-50 max-md:h-screen max-md:w-full transition-all duration-300 max-md:backdrop-blur max-md:bg-black/90 max-md:text-base flex flex-col md:flex-row items-center justify-center gap-8 font-medium ${
+    isMenuOpen ? "max-md:left-0" : "max-md:-left-full"
+  }`}
+>
+
           <li onClick={toggleMenu}>
             <a href="#home" className="hover:text-slate-300">
               Home
