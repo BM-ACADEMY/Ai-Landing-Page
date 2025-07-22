@@ -81,7 +81,7 @@ const HeroSection = () => {
     initial={{ opacity: 0, y: 50, scale: 0.8 }}
     animate={{ opacity: 1, y: 0, scale: 1 }}
     transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
-    className="text-3xl md:text-5xl text-center font-extrabold max-w-4xl bg-gradient-to-r from-white to-[#facc15] text-transparent bg-clip-text leading-[1.6]"
+    className="text-3xl md:text-4xl text-center font-extrabold max-w-4xl bg-gradient-to-r from-white to-[#facc15] text-transparent bg-clip-text leading-[1.6]"
   >
     <SparklesText className="inline-block bg-gradient-to-r from-white to-[#facc15] text-transparent bg-clip-text">
       Tamil Nadu-ல
