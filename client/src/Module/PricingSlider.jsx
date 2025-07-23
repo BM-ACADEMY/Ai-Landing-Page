@@ -22,8 +22,6 @@ const PricingSlider = () => {
     show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
-  
-
   const handleWhatsAppClick = (courseName) => {
     const phoneNumber = "9944940051";
     const message = `Hi, I'm interested in joining the ${courseName} course. Please provide more details.`;
@@ -238,14 +236,6 @@ const Card = ({ title, price, originalPrice, discount, features, popular, onEnro
       >
         Pay & Join Now
       </motion.button>
-     <a
-  href="upi://pay?pa=alamaanath2025-1@oksbi&pn=Al%20Amaanath%20Promoters&am=1&cu=INR&tn=Booking%20Advance"
-  className="bg-green-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-green-700 transition"
->
-  Pay ₹1 via UPI
-</a>
-
-
 
       <motion.button
         onClick={onEnrollClick}
