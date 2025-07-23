@@ -34,21 +34,28 @@
 
 
 
+import React from "react";
 
 const UpiPayment = () => {
   const handleUpiPayment = () => {
     const upiUrl = `upi://pay?pa=aakashaakash0013@okicici&pn=Aakash&am=10&cu=INR`;
-    window.location.href = upiUrl; // opens the UPI app
+    window.location.href = upiUrl; // Opens UPI app on mobile
   };
 
   return (
-    <div className="text-center mt-4">
-      <button
-        onClick={handleUpiPayment}
-        className="bg-green-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-green-700 transition"
-      >
-        Pay ₹1 via UPI
-      </button>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 px-4">
+      <div className="bg-white shadow-lg rounded-lg p-6 max-w-md w-full text-center">
+        <h2 className="text-2xl font-semibold mb-4">Pay ₹10 via UPI</h2>
+        <button
+          onClick={handleUpiPayment}
+          className="bg-green-600 text-white px-6 py-3 rounded-md shadow-md hover:bg-green-700 transition"
+        >
+          Pay Now
+        </button>
+        <p className="text-sm text-gray-500 mt-4">
+          ⚠️ This works only on mobile with UPI apps like GPay, PhonePe, or Paytm.
+        </p>
+      </div>
     </div>
   );
 };
