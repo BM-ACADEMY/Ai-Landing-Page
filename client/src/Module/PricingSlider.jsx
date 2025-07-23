@@ -236,7 +236,7 @@ const Card = ({ title, price, originalPrice, discount, features, popular, onEnro
       >
         Pay & Join Now
       </motion.button>
-      <a href="upi://pay?pa=alamaanath2025-1@oksbi&pn=Al%20Amaanath%20Promoters&am=5000&cu=INR&tn=Booking%20Advance">
+      <a href="upi://pay?pa=alamaanath2025-1@oksbi&pn=Al%20Amaanath%20Promoters&am=10&cu=INR&tn=Booking%20Advance">
    Pay ₹5000 via UPI
 </a>
 
