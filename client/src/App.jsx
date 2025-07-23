@@ -34,9 +34,10 @@
 
 
 
+
 const UpiPayment = () => {
   const handleUpiPayment = () => {
-    const upiUrl = `upi://pay?pa=alamaanath2025-1@oksbi&pn=Al%20Amaanath%20Promoters&am=0.1&cu=INR&tn=Booking%20Advance`;
+    const upiUrl = `upi://pay?pa=aakashaakash0013@okicici&pn=Aakash&am=10&cu=INR`;
     window.location.href = upiUrl; // opens the UPI app
   };
 
