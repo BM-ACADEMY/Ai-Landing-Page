@@ -84,7 +84,7 @@ const PricingSlider = () => {
     if (paymentInfo) {
       const message = `Hello! My payment for the '${paymentInfo.course}' course was successful. My payment ID is ${paymentInfo.paymentId}.`;
       const encodedMessage = encodeURIComponent(message);
-      const whatsappUrl = `https://wa.me/9952787198?text=${encodedMessage}`;
+      const whatsappUrl = `https://wa.me/9944940051?text=${encodedMessage}`;
 
       // Open WhatsApp and close the success modal
       window.open(whatsappUrl, "_blank");
