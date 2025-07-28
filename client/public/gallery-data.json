@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "url": "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?cs=srgb&dl=action-asphalt-auto-210019.jpg&fm=jpg",
+    "thumbnailUrl": "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?cs=srgb&dl=action-asphalt-auto-210019.jpg&fm=jpg",
+    "category": "Online",
+    "description": "Online AI Course Session - Batch 1"
+  },
+  {
+    "id": 2,
+    "url": "/gallery/dk1.jpg",
+    "thumbnailUrl": "/gallery/dk1_thumb.jpg",
+    "category": "Offline",
+    "description": "Offline Workshop - Pondicherry Center"
+  },
+  {
+    "id": 3,
+    "url": "/gallery/real1.jpg",
+    "thumbnailUrl": "/gallery/real1_thumb.jpg",
+    "category": "Online",
+    "description": "Live Online Class in Progress"
+  },
+  {
+    "id": 4,
+    "url": "../src/assets/",
+    "thumbnailUrl": "/gallery/hajj1_thumb.jpg",
+    "category": "Offline",
+    "description": "Hands-on Training Session"
+  },
+  {
+    "id": 5,
+    "url": "/gallery/foundation1.jpg",
+    "thumbnailUrl": "/gallery/foundation1_thumb.jpg",
+    "category": "Online",
+    "description": "Interactive Online Learning"
+  },
+  {
+    "id": 6,
+    "url": "/gallery/travel1.jpg",
+    "thumbnailUrl": "/gallery/travel1_thumb.jpg",
+    "category": "Offline",
+    "description": "Practical Lab Session"
+  },
+  {
+    "id": 7,
+    "url": "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?cs=srgb&dl=action-asphalt-auto-210019.jpg&fm=jpg",
+    "thumbnailUrl": "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?cs=srgb&dl=action-asphalt-auto-210019.jpg&fm=jpg",
+    "category": "Online",
+    "description": "Virtual AI Workshop"
+  },
+  {
+    "id": 8,
+    "url": "./",
+    "thumbnailUrl": "/gallery/offline2_thumb.jpg",
+    "category": "Offline",
+    "description": "Group Project Session"
+  },
+  {
+    "id": 9,
+    "url": "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?cs=srgb&dl=action-asphalt-auto-210019.jpg&fm=jpg",
+    "thumbnailUrl": "https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg?cs=srgb&dl=action-asphalt-auto-210019.jpg&fm=jpg",
+    "category": "Online",
+    "description": "Advanced AI Techniques Session"
+  },
+  {
+    "id": 10,
+    "url": "/gallery/offline3.jpg",
+    "thumbnailUrl": "/gallery/offline3_thumb.jpg",
+    "category": "Offline",
+    "description": "Certification Ceremony"
+  }
+]
