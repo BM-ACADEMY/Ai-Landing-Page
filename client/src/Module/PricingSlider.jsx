@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import axios from "axios";
-import { CheckCircle, X } from "lucide-react";
+import { CheckCircle, X, Loader2 } from "lucide-react";
 
 // A custom hook to get window dimensions for the confetti effect
 const useWindowSize = () => {
@@ -34,6 +34,7 @@ const PricingSlider = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // State for loading animation
 
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [paymentInfo, setPaymentInfo] = useState(null);
@@ -79,29 +80,44 @@ const PricingSlider = () => {
     setIsConfettiActive(true);
   };
 
-  // --- NEW: This function now handles the redirect ---
   const handleRedirectToWhatsApp = () => {
     if (paymentInfo) {
       const message = `Hello! My payment for the '${paymentInfo.course}' course was successful. My payment ID is ${paymentInfo.paymentId}.`;
       const encodedMessage = encodeURIComponent(message);
       const whatsappUrl = `https://wa.me/9944940051?text=${encodedMessage}`;
 
-      // Open WhatsApp and close the success modal
       window.open(whatsappUrl, "_blank");
       setShowSuccessModal(false);
     }
   };
+  
+  // --- NEW: Handler to allow only 10 numeric digits for phone ---
+  const handlePhoneChange = (e) => {
+    const value = e.target.value.replace(/\D/g, ''); // Remove all non-digit characters
+    if (value.length <= 10) {
+      setPhone(value);
+    }
+  };
 
   const handlePayment = async () => {
-    if (!email || !phone) {
-      setError("Please enter both email and phone number.");
+    setError("");
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      setError("Please enter a valid email address.");
       return;
     }
-    // ... rest of the validation
+    const phoneRegex = /^\d{10}$/;
+    if (!phone || !phoneRegex.test(phone)) {
+      setError("Please enter a valid 10-digit phone number.");
+      return;
+    }
     if (!selectedCourse?.price || !selectedCourse?.title) {
       setError("Invalid course selection. Please try again.");
       return;
     }
+
+    setIsLoading(true);
 
     try {
       const amount = parseInt(selectedCourse.price.replace(/[₹,]/g, ""));
@@ -121,7 +137,6 @@ const PricingSlider = () => {
         }
       );
 
-      // Close your modal before opening Razorpay
       setIsModalOpen(false);
 
       const options = {
@@ -141,7 +156,6 @@ const PricingSlider = () => {
                 razorpay_signature: response.razorpay_signature,
               }
             );
-
             if (verifyResponse.data.status === "success") {
               handlePaymentSuccess({
                 courseName,
@@ -182,7 +196,9 @@ const PricingSlider = () => {
     } catch (err) {
       console.error("Error creating order:", err.response?.data || err);
       setError(err.response?.data?.error || "Failed to initiate payment.");
-      setIsModalOpen(true); // Re-open modal if the API call fails
+      setIsModalOpen(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -325,10 +341,10 @@ const PricingSlider = () => {
               </Label>
               <Input
                 id="phone"
-                type="tel"
+                type="tel" // Use "tel" for semantic correctness
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                placeholder="Enter your phone number"
+                onChange={handlePhoneChange} // Use the new handler
+                placeholder="Enter your 10-digit phone number"
                 className="bg-gray-800 text-white border-gray-700 rounded-lg focus:ring-2 focus:ring-yellow-500"
               />
             </div>
@@ -346,24 +362,30 @@ const PricingSlider = () => {
             </Button>
             <Button
               onClick={handlePayment}
-              className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold rounded-lg"
+              disabled={isLoading}
+              className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold rounded-lg flex items-center justify-center min-w-[180px]"
             >
-              Proceed to Payment
+              {isLoading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Processing...
+                </>
+              ) : (
+                "Proceed to Payment"
+              )}
             </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
 
-      {/* --- UPDATED SUCCESS MODAL --- */}
+      {/* Success Modal */}
       {showSuccessModal && (
         <>
-          {/* Backdrop */}
           <div
             className="fixed inset-0 bg-black/80 z-[1000]"
             onClick={() => setShowSuccessModal(false)}
           />
 
-          {/* Confetti - Layered between backdrop and modal */}
           {isConfettiActive && (
             <ReactConfetti
               width={width}
@@ -377,12 +399,10 @@ const PricingSlider = () => {
                 zIndex: 1001,
                 pointerEvents: "none",
               }}
-              // --- FIX: Redirect on completion ---
               onConfettiComplete={handleRedirectToWhatsApp}
             />
           )}
 
-          {/* Modal content wrapper - Highest layer */}
           <div className="fixed inset-0 z-[1002] flex items-center justify-center p-4 pointer-events-none">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -441,7 +461,6 @@ const PricingSlider = () => {
   );
 };
 
-// Card component remains unchanged
 const Card = ({
   title,
   price,

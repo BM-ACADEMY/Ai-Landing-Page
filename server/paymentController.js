@@ -82,3 +82,17 @@ exports.verifyCoursePayment = async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
+
+
+exports.getPaymentHistory = async (req, res) => {
+  try {
+    // NOTE: In a real-world app, you MUST add authentication here
+    // to ensure only authorized admins can access this data.
+
+    const payments = await Payment.find({}).sort({ createdAt: -1 });
+    res.json(payments);
+  } catch (err) {
+    console.error('Error fetching payment history:', err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
