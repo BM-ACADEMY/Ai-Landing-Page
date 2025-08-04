@@ -41,7 +41,7 @@ const PricingSlider = () => {
   const [isConfettiActive, setIsConfettiActive] = useState(false);
 
   const { width, height } = useWindowSize();
-  const validAmounts = [999, 1999, 4999, 6999, 9999];
+  const validAmounts = [799, 999, 2999, 6999, 9999];
 
   const container = {
     hidden: { opacity: 0 },
@@ -205,8 +205,8 @@ const PricingSlider = () => {
   const cards = [
     {
       title: "AI for School Students (8th–12th Std)",
-      price: "₹999",
-      originalPrice: "₹1,499",
+      price: "₹799",
+      originalPrice: "₹1,999",
       discount: "50% OFF",
       features: [
         "Create AI Memes, Voice Bots & Stories",
@@ -218,8 +218,8 @@ const PricingSlider = () => {
     },
     {
       title: "AI for College Students",
-      price: "₹1,999",
-      originalPrice: "₹3,999",
+      price: "₹999",
+      originalPrice: "₹2,999",
       discount: "50% OFF",
       features: [
         "Build Final Year Projects, Resume & Freelance Tools",
@@ -231,8 +231,8 @@ const PricingSlider = () => {
     },
     {
       title: "AI for Job Seekers",
-      price: "₹4,999",
-      originalPrice: "₹6,999",
+      price: "₹2,999",
+      originalPrice: "₹4,999",
       discount: "50% OFF",
       features: [
         "Create ATS-Friendly Resume, Automate Job Search & LinkedIn",

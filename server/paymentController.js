@@ -16,7 +16,7 @@ exports.createCourseOrder = async (req, res) => {
     }
 
     // Validate amount (ensure it matches one of the course offer prices)
-    const validAmounts = [999, 1999, 4999, 6999, 9999]; // Updated to match frontend prices
+    const validAmounts = [799, 999, 2999, 6999, 9999]; // Updated to match frontend prices
     if (!validAmounts.includes(Number(amount))) {
       return res.status(400).json({ error: 'Invalid course amount' });
     }
